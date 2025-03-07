@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: grey;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #logo{
+            width:150px;
+            height:auto;
+        }
+        .navbar h1{
+            margin-right: 320px;
+        }
+
+        .container {
+            margin: left;
+            padding: 20px;
+            margin-top: 20px;
+            width:100%;
+
+        }
+        
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .form-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .form-group label {
+        width: 200px;
+        font-weight: bold;
+    }
+
+    
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        flex: 1;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+        margin-left: 10px;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div><img src="/pic/jobs.jpeg" id="logo"></div>
+        <div><a href="#registrationForm" id="reg"><h1>Register to our job portal</h1></a></div>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="container" id="registrationForm">
+        <form id="jobForm">
+            <div class="form-group">
+                <div>
+                    <label>Please Enter your Email:</label>
+                </div>
+                <div>
+                    <input type="email" id="email" placeholder="Should be a valid email id" required>
+                    <span class="error" id="emailError"></span>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="form-group">
+                <div>
+                    <label>Please Enter your password:</label>
+                </div>
+                <div>
+                    <input type="password" id="password" placeholder="Minimum of length 6" minlength="6" required>
+                    <span class="error" id="passwordError"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div>
+                    <label>Please Enter your Telephone:</label>
+                </div>
+                <div>
+                    <input type="tel" id="phone" placeholder="xxx-xxx-xxxx" pattern="\d{3}-\d{3}-\d{4}" required>
+                    <span class="error" id="phoneError"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group" id="java">
+                <div>
+                    <label>Which language do you know?</label>
+                </div>
+                <div>
+                    <input type="checkbox" value="C++"> C++
+                    <input type="checkbox" value="VB"> VB
+                    <input type="checkbox" value="Java"> Java
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div>
+                    <label>Your Gender?</label>
+                </div>
+                <div>
+                    <input type="radio" name="gender" value="Male" required> Male
+                    <input type="radio" name="gender" value="Female" required> Female
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div>
+                    <label>Your DOB:</label>
+                </div>
+                <div>
+                    <input type="date" id="dob" required>
+                    <span class="error" id="dobError"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div>
+                    <label>Your domicile:</label>
+                </div>
+                <div>
+                    <input list="domicileList" id="domicile" required>
+                    <datalist id="domicileList">
+                        <option value="London"></option>
+                        <option value="Paris"></option>
+                        <option value="New York"></option>
+                    </datalist>
+                    <span class="error" id="domicileError"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div>
+                    <label>Your address:</label>
+                </div>
+                <div>
+                    <textarea id="address" placeholder="Your permanent address" required></textarea>
+                    <span class="error" id="addressError"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <div>
+                    <label>Attach your CV:</label>
+                </div>
+                <div>
+                    <input type="file" id="cv" required>
+                    <span class="error" id="cvError"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <button type="submit">Register</button>
+                <button type="reset">Fill Again</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        © All rights reserved
+    </div>
+
+<script>
+    document.getElementById("jobForm").addEventListener("submit", function(event) {
+        let isValid = true;
+
+        // Name Validation
+        let name = document.getElementById("name").value;
+        if (name.trim() === "") {
+            document.getElementById("nameError").textContent = "Name is required.";
+            isValid = false;
+        } else {
+            document.getElementById("nameError").textContent = "";
+        }
+
+        // Email Validation
+        let email = document.getElementById("email").value;
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById("emailError").textContent = "Enter a valid email.";
+            isValid = false;
+        } else {
+            document.getElementById("emailError").textContent = "";
+        }
+
+        // Password Validation
+        let password = document.getElementById("password").value;
+        if (password.length < 6) {
+            document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
+            isValid = false;
+        } else {
+            document.getElementById("passwordError").textContent = "";
+        }
+
+        // Phone Validation
+        let phone = document.getElementById("phone").value;
+        let phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+        if (!phonePattern.test(phone)) {
+            document.getElementById("phoneError").textContent = "Phone must be in xxx-xxx-xxxx format.";
+            isValid = false;
+        } else {
+            document.getElementById("phoneError").textContent = "";
+        }
+
+        // DOB Validation
+        let dob = document.getElementById("dob").value;
+        if (!dob) {
+            document.getElementById("dobError").textContent = "Date of Birth is required.";
+            isValid = false;
+        } else {
+            document.getElementById("dobError").textContent = "";
+        }
+
+        // Domicile Validation
+        let domicile = document.getElementById("domicile").value;
+        if (domicile.trim() === "") {
+            document.getElementById("domicileError").textContent = "Domicile is required.";
+            isValid = false;
+        } else {
+            document.getElementById("domicileError").textContent = "";
+        }
+
+        // Address Validation
+        let address = document.getElementById("address").value;
+        if (address.trim() === "") {
+            document.getElementById("addressError").textContent = "Address is required.";
+            isValid = false;
+        } else {
+            document.getElementById("addressError").textContent = "";
+        }
+
+        // CV Validation
+        let cv = document.getElementById("cv").files.length;
+        if (cv === 0) {
+            document.getElementById("cvError").textContent = "Please attach your CV.";
+            isValid = false;
+        } else {
+            document.getElementById("cvError").textContent = "";
+        }
+
+        if (!isValid) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+    });
+</script>
+
+</body>
+</html>

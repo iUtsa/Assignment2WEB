@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d3d3d3;
+            text-align: left;
+        }
+        .container {
+            width: 30%;
+            height:auto;
+            margin: left;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        h1 {
+            text-align: left;
+            color: green;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>User Registration</h1>
+    <div class="container">
+        <p>Please complete the following form to register with our site:</p>
+
+        <form>
+            <label for="username">User Name:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label>Gender:</label>
+            <div class="radio-group">
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label>
+            </div>
+
+            <label for="source">How did you hear about us?:</label>
+            <select id="source" name="source">
+                <option value="" selected>Select answer</option>
+                <option value="website">Another website</option>
+                <option value="magazine">Magazine ad</option>
+                <option value="friend">From a friend</option>
+                <option value="other">Other</option>
+            </select>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="mailing_list" name="mailing_list">
+                <label for="mailing_list">Please select this box if you wish to be added to our mailing list. We will not pass on your details to any third party.</label>
+            </div>
+
+            <button type="submit">Register now</button>
+        </form>
+    </div>
+
+</body>
+</html>
